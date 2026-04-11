@@ -1854,12 +1854,60 @@ document.addEventListener('DOMContentLoaded', loadAgenda);
 </script>
 
 
-<!-- Formspree Ajax -->
+<!-- Formspree: envoi AJAX sans dépendance externe -->
 <script>
-  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-  formspree('initForm', { formElement: '#contact-form', formId: 'xbdpndnz' });
+(function() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+
+  const successEl = document.querySelector('[data-fs-success]');
+  const errorEl   = document.querySelector('[data-fs-error]');
+  const submitBtn = form.querySelector('[data-fs-submit-btn]');
+  const btnLabel  = submitBtn ? submitBtn.textContent : 'Envoyer le message';
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Reset messages
+    if (successEl) successEl.style.display = 'none';
+    if (errorEl)   { errorEl.style.display = 'none'; errorEl.textContent = ''; }
+
+    // Disable button
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = 'Envoi en cours…'; }
+
+    try {
+      const resp = await fetch('https://formspree.io/f/xbdpndnz', {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (resp.ok) {
+        // Success
+        if (successEl) successEl.style.display = 'block';
+        form.reset();
+        // Hide form fields so only success message is visible
+        Array.from(form.elements).forEach(el => {
+          const group = el.closest('.form-group');
+          if (group) group.style.display = 'none';
+        });
+        if (submitBtn) submitBtn.style.display = 'none';
+      } else {
+        const data = await resp.json().catch(() => ({}));
+        const msg = (data.errors || []).map(e => e.message).join(' ') || 'Une erreur est survenue. Veuillez réessayer.';
+        if (errorEl) { errorEl.textContent = msg; errorEl.style.display = 'block'; }
+        if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = btnLabel; }
+      }
+    } catch (err) {
+      if (errorEl) {
+        errorEl.textContent = 'Erreur de connexion. Veuillez vérifier votre connexion internet et réessayer.';
+        errorEl.style.display = 'block';
+      }
+      if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = btnLabel; }
+    }
+  });
+})();
 </script>
-<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 </body>
 </html>
