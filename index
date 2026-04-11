@@ -1721,7 +1721,7 @@
 //  GOOGLE SHEETS AGENDA — Assemblée Chrétienne La Chaux-de-Fonds
 //  Collez ici l'URL CSV de votre Google Sheets publié:
 // ════════════════════════════════════════════════════════════════════
-const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vToH1InQm4CBdQCgahaHB4EydOzAiJOnnAnAhSBWXMLAGHnpLMiQ8b7MEXeGmJwK3BLvhnNcEt5HFxg/pub?output=csv';
+const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vToH1InQm4CBdQCgahaHB4EydOzAiJOnnAnAhSBWXMLAGHnpLMiQ8b7MEXeGmJwK3BLvhnNcEt5HFxg/pub?gid=920623295&single=true&output=csv';
 
 const MOIS_FR  = ['JAN','FÉV','MAR','AVR','MAI','JUN','JUL','AOÛ','SEP','OCT','NOV','DÉC'];
 const JOURS_FR = ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
@@ -1781,6 +1781,12 @@ function buildCardHTML(e) {
 
 async function loadAgenda() {
   if (!GOOGLE_SHEET_CSV_URL || GOOGLE_SHEET_CSV_URL === 'VOTRE_URL_ICI') return;
+
+  // file:// protocol blocks fetch — needs a local server or real hosting
+  if (window.location.protocol === 'file:') {
+    console.info('Agenda: ouvrez via un serveur (python3 -m http.server 8080) pour activer Google Sheets.');
+    return;
+  }
 
   try {
     const resp = await fetch(GOOGLE_SHEET_CSV_URL);
