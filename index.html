@@ -1743,7 +1743,9 @@ function parseCSVLine(line) {
 // Génère les occurrences futures d'un événement récurrent
 function genOccurrences(event, horizon) {
   const today = new Date(); today.setHours(0,0,0,0);
-  const start = new Date(event.date);
+  // Datum lokal parsen (verhindert UTC-Verschiebung in Schweizer Zeitzone)
+  const [y,m,d] = event.date.split('-').map(Number);
+  const start = new Date(y, m-1, d);
   const rec = (event.recurrence || '').toLowerCase();
   const results = [];
 
@@ -1752,7 +1754,7 @@ function genOccurrences(event, horizon) {
     return results;
   }
 
-  let cur = new Date(start);
+  let cur = new Date(y, m-1, d);
   while (cur <= horizon) {
     if (cur >= today) results.push({ ...event, dateObj: new Date(cur) });
     if (rec.includes('hebdo'))       cur.setDate(cur.getDate() + 7);
@@ -1789,7 +1791,7 @@ async function loadAgenda() {
   }
 
   try {
-    const resp = await fetch(GOOGLE_SHEET_CSV_URL);
+    const resp = await fetch(GOOGLE_SHEET_CSV_URL + '&t=' + Date.now());
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     const csv  = await resp.text();
     const rows = csv.trim().split('\n').slice(1); // skip header row
