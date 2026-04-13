@@ -129,19 +129,6 @@
   .nav-links .dropdown a { padding: 0.55rem 1.2rem; border-bottom: 1px solid var(--parchment); font-size: 0.85rem; text-transform: none; }
   .nav-links .dropdown a::after { display: none; }
   .nav-links .dropdown a:last-child { border-bottom: none; }
-  .lang-switcher {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.78rem;
-    letter-spacing: 0.1em;
-    color: var(--taupe);
-    border: 1px solid var(--parchment);
-    padding: 0.3rem 0.7rem;
-    cursor: pointer;
-    background: transparent;
-    flex-shrink: 0;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .lang-switcher:hover { border-color: var(--terracotta); color: var(--terracotta); }
 
   
   /* ── HERO: Real 1913 city map + cartouche ── */
@@ -820,10 +807,8 @@
         <div class="dropdown">
           <a onclick="showSection('activite-culte'); closeMobileMenu()">Culte du dimanche</a>
           <a onclick="showSection('activite-ecole'); closeMobileMenu()">École du dimanche</a>
-          <a onclick="showSection('activite-etude'); closeMobileMenu()">Étude biblique</a>
           <a onclick="showSection('activite-jeunesse'); closeMobileMenu()">Jeunesse</a>
           <a onclick="showSection('activite-priere'); closeMobileMenu()">Réunion de prière</a>
-          <a onclick="showSection('activite-maison'); closeMobileMenu()">Groupes de maison</a>
         </div>
       </li>
       <li><a onclick="showSection('evenements'); closeMobileMenu()">Événements</a></li>
@@ -832,7 +817,6 @@
       <li><a onclick="showSection('contact'); closeMobileMenu()">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <span class="lang-switcher">FR / DE</span>
       <button class="hamburger" id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -898,7 +882,7 @@
         <div class="event-card reveal">
           <div class="event-date">
             <div class="date-box"><div class="day">06</div><div class="month">Avr</div></div>
-            <div class="event-time">Dimanche — 10h00</div>
+            <div class="event-time">Dimanche — 09h30</div>
           </div>
           <h3>Culte du dimanche</h3>
           <p>Prédication, louange et communion fraternelle. Tous sont les bienvenus.</p>
@@ -914,7 +898,7 @@
         <div class="event-card reveal">
           <div class="event-date">
             <div class="date-box"><div class="day">20</div><div class="month">Avr</div></div>
-            <div class="event-time">Dimanche — 10h00</div>
+            <div class="event-time">Dimanche — 09h30</div>
           </div>
           <h3>Culte de Pâques</h3>
           <p>Célébration de la résurrection du Seigneur — repas fraternel à midi.</p>
@@ -985,17 +969,12 @@
         <div class="activity-item" onclick="showSection('activite-culte')" style="cursor:pointer;">
           <h3>Culte du dimanche</h3>
           <p>Adoration, prédication de la Parole et Sainte-Cène. Moment central de notre vie d'assemblée.</p>
-          <span class="activity-schedule">Dimanche — 10h00</span>
+          <span class="activity-schedule">Dimanche — 09h30</span>
         </div>
         <div class="activity-item" onclick="showSection('activite-ecole')" style="cursor:pointer;">
           <h3>École du dimanche</h3>
           <p>Enseignement biblique adapté aux enfants, en parallèle du culte pour adultes.</p>
-          <span class="activity-schedule">Dimanche — 10h00</span>
-        </div>
-        <div class="activity-item" onclick="showSection('activite-etude')" style="cursor:pointer;">
-          <h3>Étude biblique</h3>
-          <p>Approfondissement de la Parole en groupe, dans une atmosphère fraternelle et studieuse.</p>
-          <span class="activity-schedule">Mercredi — 19h30</span>
+          <span class="activity-schedule">Dimanche — 09h30</span>
         </div>
         <div class="activity-item" onclick="showSection('activite-jeunesse')" style="cursor:pointer;">
           <h3>Jeunesse</h3>
@@ -1005,12 +984,7 @@
         <div class="activity-item" onclick="showSection('activite-priere')" style="cursor:pointer;">
           <h3>Réunion de prière</h3>
           <p>Intercession et prière en commun pour l'assemblée, le pays et le monde.</p>
-          <span class="activity-schedule">Jeudi — 18h00</span>
-        </div>
-        <div class="activity-item" onclick="showSection('activite-maison')" style="cursor:pointer;">
-          <h3>Groupes de maison</h3>
-          <p>Rencontres en petits groupes dans les foyers, pour approfondir les liens fraternels.</p>
-          <span class="activity-schedule">Sur invitation</span>
+          <span class="activity-schedule">Jeudi — 20h00</span>
         </div>
       </div>
       <hr class="gold">
@@ -1134,60 +1108,6 @@
   </section>
 </div>
 
-<!-- ══════ ÉTUDE BIBLIQUE ══════ -->
-<div id="activite-etude" class="page-section">
-  <section style="background:var(--cream); padding:3.5rem 2rem 1.5rem;">
-    <div class="container">
-      <button class="btn-back" onclick="showSection('activites')">← Nos activités</button>
-      <span class="section-label" style="margin-top:1.2rem; display:block;">Étude biblique</span>
-      <h2>Étude biblique</h2>
-      <p class="subpage-schedule">Mercredi — 19h30</p>
-    </div>
-  </section>
-
-  <section style="background:var(--warm-white); padding:3rem 2rem 5rem;">
-    <div class="container subpage-grid">
-      <div class="subpage-main">
-        <p class="subpage-intro">L'étude biblique hebdomadaire est un moment d'approfondissement de la Parole de Dieu en groupe. Dans une atmosphère fraternelle et studieuse, nous explorons ensemble les Écritures.</p>
-        <h3 style="font-family:'Playfair Display',serif; color:var(--charcoal); margin-bottom:1rem;">09h30 — Culte &amp; Sainte-Cène</h3>
-        <p style="color:var(--text-light); line-height:1.75; margin-bottom:1.8rem;">Le culte commence par un temps d'adoration libre, où chacun est invité à participer — par une lecture, un cantique ou une prière. Nous célébrons ensuite ensemble la Sainte-Cène, en mémoire du sacrifice du Seigneur Jésus, comme il nous l'a demandé. Ce moment n'est dirigé par aucun responsable attitré : c'est l'Esprit qui conduit, et tout frère peut prendre part.</p>
-
-        <h3 style="font-family:'Playfair Display',serif; color:var(--charcoal); margin-bottom:1rem;">10h40 — Le Message</h3>
-        <p style="color:var(--text-light); line-height:1.75; margin-bottom:1.8rem;">Après une courte pause, nous nous retrouvons pour l'enseignement de la Parole de Dieu. Un frère partage un message tiré des Écritures, ancré dans le texte biblique. Ces prédications visent à nourrir, encourager et édifier chaque participant dans sa foi.</p>
-
-        <div class="placeholder-block">
-          <span class="placeholder-label">À compléter</span>
-          <p>Ajoutez ici un témoignage, une photo du culte, ou toute information complémentaire.</p>
-        </div>
-      </div>
-      <aside class="subpage-aside">
-        <div class="aside-card">
-          <h3>Infos pratiques</h3>
-          <div class="contact-detail">
-            <div>
-              <strong>Horaire</strong>
-              <p>Mercredi — 19h30</p>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div>
-              <strong>Lieu</strong>
-              <p>Salle de réunions chrétiennes<br>Rue Numa-Droz 77<br>2300 La Chaux-de-Fonds</p>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div>
-              <strong>Contact</strong>
-              <p>contact@assemblee-lachaux.ch</p>
-            </div>
-          </div>
-          <button class="btn-primary" style="width:100%; margin-top:1rem;" onclick="showSection('contact')">Nous contacter</button>
-        </div>
-      </aside>
-    </div>
-  </section>
-</div>
-
 <!-- ══════ JEUNESSE ══════ -->
 <div id="activite-jeunesse" class="page-section">
   <section style="background:var(--cream); padding:3.5rem 2rem 1.5rem;">
@@ -1249,20 +1169,24 @@
       <button class="btn-back" onclick="showSection('activites')">← Nos activités</button>
       <span class="section-label" style="margin-top:1.2rem; display:block;">Réunion de prière</span>
       <h2>Réunion de prière</h2>
-      <p class="subpage-schedule">Jeudi — 18h00</p>
+      <p class="subpage-schedule">Jeudi — 20h00</p>
     </div>
   </section>
 
   <section style="background:var(--warm-white); padding:3rem 2rem 5rem;">
     <div class="container subpage-grid">
       <div class="subpage-main">
-        <p class="subpage-intro">La réunion de prière est un moment essentiel de notre vie communautaire. Nous nous retrouvons pour intercéder ensemble pour l'assemblée, pour la ville de La Chaux-de-Fonds, pour la Suisse et pour le monde.</p>
+        <p class="subpage-intro">La réunion de prière est un moment essentiel de notre vie communautaire. Chaque jeudi soir, nous nous retrouvons pour intercéder ensemble — en personne à la Rue Numa-Droz ou via Zoom. Nous prions pour l'assemblée, pour la ville de La Chaux-de-Fonds, pour la Suisse et pour le monde.</p>
         <h3 style="font-family:'Playfair Display',serif; color:var(--charcoal); margin-bottom:1rem;">09h30 — Culte &amp; Sainte-Cène</h3>
         <p style="color:var(--text-light); line-height:1.75; margin-bottom:1.8rem;">Le culte commence par un temps d'adoration libre, où chacun est invité à participer — par une lecture, un cantique ou une prière. Nous célébrons ensuite ensemble la Sainte-Cène, en mémoire du sacrifice du Seigneur Jésus, comme il nous l'a demandé. Ce moment n'est dirigé par aucun responsable attitré : c'est l'Esprit qui conduit, et tout frère peut prendre part.</p>
 
         <h3 style="font-family:'Playfair Display',serif; color:var(--charcoal); margin-bottom:1rem;">10h40 — Le Message</h3>
         <p style="color:var(--text-light); line-height:1.75; margin-bottom:1.8rem;">Après une courte pause, nous nous retrouvons pour l'enseignement de la Parole de Dieu. Un frère partage un message tiré des Écritures, ancré dans le texte biblique. Ces prédications visent à nourrir, encourager et édifier chaque participant dans sa foi.</p>
 
+        <div class="verse-highlight" style="margin:2rem 0; background:var(--cream); border-left:3px solid var(--terracotta); padding:1.2rem 1.5rem;">
+          <p style="font-style:italic; color:var(--charcoal);">Veillez et priez, afin que vous n'entriez pas en tentation ; l'esprit est bien disposé, mais la chair est faible.</p>
+          <cite style="color:var(--terracotta-dark); font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; font-style:normal;">Matthieu 26 : 41 — Version Darby</cite>
+        </div>
         <div class="placeholder-block">
           <span class="placeholder-label">À compléter</span>
           <p>Ajoutez ici un témoignage, une photo du culte, ou toute information complémentaire.</p>
@@ -1274,7 +1198,7 @@
           <div class="contact-detail">
             <div>
               <strong>Horaire</strong>
-              <p>Jeudi — 18h00</p>
+              <p>Jeudi — 20h00</p>
             </div>
           </div>
           <div class="contact-detail">
@@ -1297,58 +1221,7 @@
 </div>
 
 <!-- ══════ GROUPES DE MAISON ══════ -->
-<div id="activite-maison" class="page-section">
-  <section style="background:var(--cream); padding:3.5rem 2rem 1.5rem;">
-    <div class="container">
-      <button class="btn-back" onclick="showSection('activites')">← Nos activités</button>
-      <span class="section-label" style="margin-top:1.2rem; display:block;">Groupes de maison</span>
-      <h2>Groupes de maison</h2>
-      <p class="subpage-schedule">Sur invitation</p>
-    </div>
-  </section>
 
-  <section style="background:var(--warm-white); padding:3rem 2rem 5rem;">
-    <div class="container subpage-grid">
-      <div class="subpage-main">
-        <p class="subpage-intro">Les groupes de maison permettent de se retrouver en petits groupes dans les foyers, pour approfondir les liens fraternels, partager la Parole et prier ensemble dans un cadre plus intime.</p>
-        <h3 style="font-family:'Playfair Display',serif; color:var(--charcoal); margin-bottom:1rem;">09h30 — Culte &amp; Sainte-Cène</h3>
-        <p style="color:var(--text-light); line-height:1.75; margin-bottom:1.8rem;">Le culte commence par un temps d'adoration libre, où chacun est invité à participer — par une lecture, un cantique ou une prière. Nous célébrons ensuite ensemble la Sainte-Cène, en mémoire du sacrifice du Seigneur Jésus, comme il nous l'a demandé. Ce moment n'est dirigé par aucun responsable attitré : c'est l'Esprit qui conduit, et tout frère peut prendre part.</p>
-
-        <h3 style="font-family:'Playfair Display',serif; color:var(--charcoal); margin-bottom:1rem;">10h40 — Le Message</h3>
-        <p style="color:var(--text-light); line-height:1.75; margin-bottom:1.8rem;">Après une courte pause, nous nous retrouvons pour l'enseignement de la Parole de Dieu. Un frère partage un message tiré des Écritures, ancré dans le texte biblique. Ces prédications visent à nourrir, encourager et édifier chaque participant dans sa foi.</p>
-
-        <div class="placeholder-block">
-          <span class="placeholder-label">À compléter</span>
-          <p>Ajoutez ici un témoignage, une photo du culte, ou toute information complémentaire.</p>
-        </div>
-      </div>
-      <aside class="subpage-aside">
-        <div class="aside-card">
-          <h3>Infos pratiques</h3>
-          <div class="contact-detail">
-            <div>
-              <strong>Horaire</strong>
-              <p>Sur invitation</p>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div>
-              <strong>Lieu</strong>
-              <p>Salle de réunions chrétiennes<br>Rue Numa-Droz 77<br>2300 La Chaux-de-Fonds</p>
-            </div>
-          </div>
-          <div class="contact-detail">
-            <div>
-              <strong>Contact</strong>
-              <p>contact@assemblee-lachaux.ch</p>
-            </div>
-          </div>
-          <button class="btn-primary" style="width:100%; margin-top:1rem;" onclick="showSection('contact')">Nous contacter</button>
-        </div>
-      </aside>
-    </div>
-  </section>
-</div>
 
 <!-- ══════ ÉVÉNEMENTS ══════ -->
 <div id="evenements" class="page-section">
@@ -1364,7 +1237,7 @@
         <div class="event-card">
           <div class="event-date">
             <div class="date-box"><div class="day">06</div><div class="month">Avr</div></div>
-            <div class="event-time">Dimanche — 10h00</div>
+            <div class="event-time">Dimanche — 09h30</div>
           </div>
           <h3>Culte du dimanche</h3>
           <p>Prédication : « La grâce de Dieu qui apporte le salut »</p>
@@ -1388,7 +1261,7 @@
         <div class="event-card">
           <div class="event-date">
             <div class="date-box"><div class="day">20</div><div class="month">Avr</div></div>
-            <div class="event-time">Dimanche — 10h00</div>
+            <div class="event-time">Dimanche — 09h30</div>
           </div>
           <h3>Culte de Pâques</h3>
           <p>Célébration de la résurrection du Seigneur — repas fraternel à midi</p>
@@ -1538,11 +1411,6 @@
             <cite>Éphésiens 4 : 1</cite>
           </div>
         </div>
-        <div>
-          <h3>Notre histoire</h3>
-          <p style="margin-top:1.5rem; color:var(--taupe); font-style:italic;">Ce chapitre sera complété prochainement.</p>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -1551,10 +1419,15 @@
       <span class="section-label">Notre lieu de réunion</span>
       <h2>Salle de réunions chrétiennes</h2>
       <p class="lieu-address">Rue Numa-Droz 77 — 2300 La Chaux-de-Fonds</p>
-      <div class="map-placeholder">
-        <p style="font-size:1.1rem; margin:0; font-style:normal;">Rue Numa-Droz 77 — 2300 La Chaux-de-Fonds</p>
-        <p style="font-size:0.9rem; opacity:0.7; margin:0;">Intégrez ici votre carte Google Maps</p>
-      </div>
+      <div style="width:100%; max-width:700px; margin:2rem auto 0; border:1px solid rgba(184,150,46,0.25); overflow:hidden;">
+      <iframe
+        src="https://maps.google.com/maps?q=Rue+Numa-Droz+77%2C+2300+La+Chaux-de-Fonds%2C+Suisse&t=&z=17&ie=UTF8&iwloc=&output=embed"
+        width="100%" height="320" style="border:0; display:block;"
+        allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Assemblée Chrétienne — Rue Numa-Droz 77, La Chaux-de-Fonds">
+      </iframe>
+    </div>
     </div>
   </section>
 </div>
@@ -1586,15 +1459,10 @@
             <div class="contact-detail">
               <div>
                 <strong>Culte du dimanche</strong>
-                <p>Chaque dimanche — 10h00</p>
+                <p>Chaque dimanche — 09h30</p>
               </div>
             </div>
-            <div class="contact-detail">
-              <div>
-                <strong>Étude biblique</strong>
-                <p>Mercredi — 19h30</p>
-              </div>
-            </div>
+
             <div class="contact-detail">
               <div>
                 <strong>E-mail</strong>
